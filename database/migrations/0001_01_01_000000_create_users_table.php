@@ -43,6 +43,7 @@ return new class extends Migration
             'password' => bcrypt('admin'),
             'created_at' => now(),
             'updated_at' => now(),
+            'is_admin' => true,
         ]);
     }
 
