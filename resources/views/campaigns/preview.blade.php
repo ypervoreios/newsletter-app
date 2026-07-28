@@ -11,9 +11,14 @@
             <h2 class="text-2xl font-semibold text-gray-900">{{ $campaign->title }}</h2>
             <p class="text-sm text-gray-500">{{ $campaign->subject }}</p>
         </div>
-        <a href="{{ route('campaigns.index') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition">
-            Back to campaigns
-        </a>
+        <div class="flex flex-wrap items-center gap-2">
+            <a href="{{ route('campaigns.edit', $campaign) }}" class="inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">
+                Edit campaign
+            </a>
+            <a href="{{ route('campaigns.index') }}" class="inline-flex items-center justify-center px-4 py-2 bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition">
+                Back to campaigns
+            </a>
+        </div>
     </div>
 
     @php

@@ -84,7 +84,7 @@ class CampaignController extends Controller
      */
     public function edit(Campaign $campaign)
     {
-        //
+        return view('campaigns.edit', compact('campaign'));
     }
 
     /**
@@ -92,7 +92,20 @@ class CampaignController extends Controller
      */
     public function update(Request $request, Campaign $campaign)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'subject' => 'required',
+            'content' => 'required',
+        ]);
+
+        $campaign->update([
+            'title' => $request->title,
+            'subject' => $request->subject,
+            'content' => $request->content,
+        ]);
+
+        return redirect()->route('campaigns.preview', $campaign)
+            ->with('success', 'Campaign updated successfully.');
     }
 
     /**
