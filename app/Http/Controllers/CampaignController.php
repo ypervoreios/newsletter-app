@@ -47,24 +47,19 @@ class CampaignController extends Controller
     public function store(Request $request)
     {
          $request->validate([
-
-            'title'=>'required',
-
-            'subject'=>'required',
-
-            'content'=>'required'
-
+            'title' => 'required',
+            'subject' => 'required',
+            'content' => 'required',
+        ], [
+            'title.required' => 'Ο τίτλος είναι υποχρεωτικός.',
+            'subject.required' => 'Το θέμα είναι υποχρεωτικό.',
+            'content.required' => 'Το περιεχόμενο είναι υποχρεωτικό.',
         ]);
 
-
         Campaign::create([
-
-            'title'=>$request->title,
-
-            'subject'=>$request->subject,
-
-            'content'=>$request->content
-
+            'title' => $request->title,
+            'subject' => $request->subject,
+            'content' => $request->content,
         ]);
 
 
@@ -96,6 +91,10 @@ class CampaignController extends Controller
             'title' => 'required',
             'subject' => 'required',
             'content' => 'required',
+        ], [
+            'title.required' => 'Ο τίτλος είναι υποχρεωτικός.',
+            'subject.required' => 'Το θέμα είναι υποχρεωτικό.',
+            'content.required' => 'Το περιεχόμενο είναι υποχρεωτικό.',
         ]);
 
         $campaign->update([

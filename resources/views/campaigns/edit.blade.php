@@ -15,11 +15,23 @@ Edit Campaign
     @csrf
     @method('PUT')
 
+    @if ($errors->any())
+        <div class="mb-6 rounded border border-red-300 bg-red-50 p-4 text-sm text-red-700">
+            <p class="font-semibold">Παρακαλώ συμπληρώστε όλα τα υποχρεωτικά πεδία.</p>
+            <ul class="mt-2 list-disc space-y-1 pl-5">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <input
         name="title"
         value="{{ old('title', $campaign->title) }}"
         placeholder="Campaign title"
-        class="w-full rounded border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring">
+        class="w-full rounded border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring"
+        required>
 
     <br><br>
 
@@ -27,7 +39,8 @@ Edit Campaign
         name="subject"
         value="{{ old('subject', $campaign->subject) }}"
         placeholder="Email subject"
-        class="w-full rounded border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring">
+        class="w-full rounded border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none focus:ring"
+        required>
 
     <br><br>
 
@@ -35,7 +48,8 @@ Edit Campaign
         id="content"
         name="content"
         rows="20"
-        class="w-full rounded border border-gray-300">{{ old('content', $campaign->content) }}</textarea>
+        class="w-full rounded border border-gray-300"
+        required>{{ old('content', $campaign->content) }}</textarea>
 
     <br><br>
 
